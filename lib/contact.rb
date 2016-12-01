@@ -10,7 +10,7 @@ class Contact
     @company = attributes.fetch(:company)
     @id = @@contacts.length.+(1)
     @address = []
-    @email = []
+    @emails = []
     @phone_number = []
   end
 
@@ -18,8 +18,8 @@ class Contact
     @id
   end
 
-  def email
-    @email
+  def emails
+    @emails
   end
 
   def phone_number
@@ -51,7 +51,7 @@ class Contact
   end
 
   def add_email(email)
-    @email.push(email)
+    @emails.push(email)
   end
 
   def self.find(id)
