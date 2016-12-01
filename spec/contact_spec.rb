@@ -89,7 +89,6 @@ describe(Contact) do
       contact2 = Contact.new(:fname =>"Tyler", :lname => "Ferrin", :title => "Developer", :company => "Tesla")
       contact2.save()
       expect(Contact.find(contact2.id())).to(eq(contact2))
-
     end
   end
 
