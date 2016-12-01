@@ -16,4 +16,11 @@ describe(Address) do
       expect(test_address.city()).to(eq("Portland"))
     end
   end
+
+  describe("#state") do
+    it("Will return the name of the state.") do
+      test_address = Address.new(:street => "1234 SE Main St.", :city => "Portland", :state => "OR", :zip => "97214")
+      expect(test_address.state()).to(eq("OR"))
+    end
+  end
 end
