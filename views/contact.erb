@@ -1,0 +1,72 @@
+<h1><%= @contact.fname() %> <%= @contact.lname() %>'s information:</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Phone number(s):</h3>
+      <ul>
+        <% @contact.phone_numbers.each() do |phone_number| %>
+        <li><%= phone_number.type() %> -- <%= phone_number.number() %></li>
+        <% end %>
+      </ul>
+      <h3>Address(es):</h3>
+      <ul>
+        <% @contact.addresses.each() do |address| %>
+        <li><%= address.type() %> -- <%= address.street() %> <%= address.city() %> <%= address.state() %> <%= address.zip() %></li>
+        <% end %>
+      </ul>
+      <h3>Email(s):</h3>
+      <ul>
+        <% @contact.emails.each() do |email| %>
+        <li><%= email.type() %> -- <%= email.address() %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <form action="/contact" method="post">
+        <input type="hidden" id="contact_id" name="contact_id" value="<%= @contact.id() %>">
+        <div class="form-group">
+          <h4>Address</h4>
+          <select class="form-control" name="address_type">
+            <option value="Home">Home</option>
+            <option value="Work">Work</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="street_address" type="text" name="street_address" placeholder="Street Address" autofocus required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="city" type="text" name="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="state" type="text" name="state" placeholder="State" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="zip" type="text" name="zip" placeholder="Zip Code" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <h4>Phone Number</h4>
+          <select class="form-control" name="phone_type">
+            <option value="Cell">Cell</option>
+            <option value="Home">Home</option>
+            <option value="Work">Work</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="phone_number" type="text" name="phone_number" placeholder="Phone Number" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <h4>Email Address</h4>
+          <select class="form-control" name="email_type">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="email" type="text" name="email" placeholder="Email Address" required>
+        </div>
+        <button class="btn btn-danger" id="new_contact_button" type="submit">Update Contact</button>
+    </div>
+  </div>
+</div>
